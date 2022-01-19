@@ -1,0 +1,117 @@
+drop database centroOdontologico 
+
+create database centroOdontologico
+
+use  centroOdontologico
+
+
+create table roles (
+idRol int identity primary key not null,
+nombre varchar(300)
+
+)
+
+
+
+create table usuarios (
+
+idUsuario int identity primary key not null,
+nombre varchar (300),
+fechaRegistro datetime,
+usuario varchar(200),
+clave varchar(200),
+idRol int
+foreign key (idRol) references roles (idRol)
+
+)
+
+
+
+
+
+create table especialidades (
+
+idEspecialidad int identity primary key not null,
+nombre varchar(300)
+)
+
+
+
+create table ciudades (
+
+idCiudad int identity primary key not null,
+nombre varchar(100)
+
+)
+
+
+create table pacientes(
+
+idPaciente int identity primary key not null,
+cedula varchar(15),	
+nombres varchar(400),
+direccion varchar(300),
+correo varchar(300),
+telefono varchar(300),
+edad varchar(10),
+idCiudad int,
+foreign key(idCiudad)references  ciudades  (idCiudad)
+
+)
+
+
+create table doctores (
+
+idDoctor int identity primary key not null,
+cedula varchar(300),
+nombres varchar(300),
+apellidos varchar(300),
+direccion varchar(300),
+correo varchar(300),
+telefono varchar(300),
+idCiudad int,
+idEspecialidad int,
+foreign key (idCiudad) references ciudades(idCiudad),
+foreign key (idEspecialidad) references especialidades(idEspecialidad)
+
+)
+
+
+create table procedimientos (
+
+idProcedimiento int identity primary key not null,
+nombre varchar(300),
+detalle varchar(500),
+costo decimal(8,2),
+
+)
+
+
+create table seguros(
+idSeguro int identity primary key not null,
+institucion varchar(300),
+tipo varchar(300),
+
+
+)
+
+
+create table citas (
+
+idCita int identity primary key not null,
+fechaCita datetime ,
+activo bit default 0,
+estado int,
+idPaciente int,
+idDoctor int,
+idSeguro int,
+foreign key (idPaciente) references pacientes (idPaciente),
+foreign key (idDoctor)  references doctores(idDoctor),
+foreign key (idSeguro)  references seguros (idSeguro)
+
+)
+
+
+
+
+

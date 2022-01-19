@@ -1,0 +1,221 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<strong style="font-size:1.2rem">Doctores</strong>
+
+
+
+
+
+
+
+
+
+<!-- Button trigger modal -->
+
+<div class="row  mt-3 mb-4   ">
+
+
+
+    <button id="nuevo" name="nuevo" type="button" class="btn btn-primary col-sm-2 col-5 ms-auto me-auto " data-bs-toggle="modal" data-bs-target="#modal">Nuevo</button>
+
+
+
+</div>
+
+
+
+
+<div class="table-responsive "  style="height:25rem!important">
+
+
+<table class="table">
+    <thead class="thead-light">
+        <tr class="cabezera text-center">
+            <th scope="col">#</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Especialidad</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+
+
+    </tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg ">
+
+    
+        <div class="modal-content">
+        
+            <div class="modal-header">
+               <h5 class="modal-title" id="titulo"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formulario" name="formulario" enctype="multipart/form-data">
+                    <div class="mb-3 mt-2 row">
+
+                        <div class="col-sm-6">
+
+                            <div class="col ms-auto me-auto">
+
+                                <label class="form-label">Cedula</label>
+                                <input class="form-control validador" type="text" name="cedula" id="cedula" />
+                                <div class="invalid-feedback "> * Campo requerido </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-2">
+
+
+                        <div class="col-sm ms-auto me-auto">
+
+                            <label class="form-label">Nombres</label>
+                            <input class="form-control validador" type="text" name="nombres" id="nombres" />
+                            <div class="invalid-feedback "> * Campo requerido </div>
+
+                        </div>
+
+
+
+                        <div class="col-sm ms-auto me-auto ">
+
+                            <label class="form-label">Apellidos</label>
+                            <input class="form-control validador" type="email" name="apellidos" id="apellidos" />
+                            <div class="invalid-feedback "> * Campo requerido </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="row">
+
+
+                        <div class="col-sm-6 mt-4">
+
+                            <select name="idCiudad" id="idCiudad" class="form-select validador">
+                                    
+                                <option value="">--Seleccione una Ciudad--</option>
+                            
+
+
+                            </select>
+
+                            <div class="invalid-feedback "> * Campo requerido </div>
+
+                        </div>
+
+
+
+
+
+                        <div class="col-sm-6 mt-4">
+
+                            <select id="idEspecialidad" name="idEspecialidad" class="form-select validador">
+
+                         
+
+                            </select>
+
+                            <div class="invalid-feedback "> * Campo requerido </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="row mt-2">
+
+
+                        <div class="col-sm ms-auto me-auto">
+
+                            <label class="form-label">Direccion</label>
+                            <textarea class="form-control validador" name="direccion" id="direccion"></textarea>
+                            <div class="invalid-feedback "> * Campo requerido </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div class="row mt-2">
+
+
+                        <div class="col-sm ms-auto me-auto">
+
+                            <label class="form-label">Correo</label>
+                            <input class="form-control validador email" type="email" name="correo" id="correo" />
+                            <div class="invalid-feedback "> * Campo requerido </div>
+
+                        </div>
+
+
+
+                        <div class="col ms-auto me-auto">
+
+                            <label class="form-label">Telefono</label>
+                            <input maxlength="10" class="form-control validador telefono " type="text" name="telefono" id="telefono" />
+                            <div class="invalid-feedback "> * Campo requerido </div>
+
+                        </div>
+
+                    </div>
+                    <div>
+                    </div>
+
+                </form>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button name="salir" id="salir" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                <button name="guardar" id="guardar" type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/js/siteDoctores.js" defer></script>

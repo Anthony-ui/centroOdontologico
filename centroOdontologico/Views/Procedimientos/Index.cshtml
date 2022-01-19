@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<strong style="font-size:1.2rem">Procedimientos</strong>
+
+
+
+
+
+
+
+
+
+<!-- Button trigger modal -->
+
+<div class="row  mt-3 mb-4   ">
+
+
+
+    <button id="nuevo" name="nuevo" type="button" class="btn btn-primary col-sm-2 col-5 ms-auto me-auto " data-bs-toggle="modal" data-bs-target="#modal">Nuevo</button>
+
+
+
+</div>
+
+
+
+
+<div class="table-responsive"  style="height:25rem!important">
+<table class="table">
+    <thead class="thead-light">
+        <tr class="cabezera text-center">
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Detalle</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg ">
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formulario" name="formulario" enctype="multipart/form-data">
+                    <div class="mb-3 mt-2 row">
+
+                        <div class="col-sm-8">
+
+                            <div class="col ms-auto me-auto">
+
+                                <label class="form-label">Nombre</label>
+                                <input class="form-control validador" type="text" name="nombre" id="nombre" />
+                                <div class="invalid-feedback "> * Campo requerido </div>
+
+                            </div>
+
+                        </div>
+
+
+                            <div class="col-sm-4 ms-auto me-auto">
+
+                            <label class="form-label">Costo</label>
+                            <input class="form-control validador decimal" type="text" name="costo" id="costo" />
+                            <div class="invalid-feedback "> * Campo requerido </div>
+
+                        </div>
+    
+
+                    </div>  
+
+
+
+                    <div class="row mt-2">
+
+
+                        <div class="col-sm ms-auto me-auto">
+
+                            <label class="form-label">Detalle</label>
+                            <textarea class="form-control validador" name="detalle" id="detalle"></textarea>
+                            <div class="invalid-feedback "> * Campo requerido </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div>
+                    </div>
+
+                </form>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button name="salir" id="salir" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                <button name="guardar" id="guardar" type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/js/siteProcedimientos.js" defer></script>
+

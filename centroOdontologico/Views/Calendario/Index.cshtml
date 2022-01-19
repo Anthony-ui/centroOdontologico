@@ -1,0 +1,304 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<link rel="stylesheet" href="~/calendar/css/style.css" />
+
+@*    <script defer src="~/js/site.js"></script>*@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Calendar 04</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+</head>
+<body>
+
+    <div>
+
+        <div class="container  " style="margin-top:5rem">
+            <div class="content  w-100">
+                <div class="calendar-container">
+                    <div class="calendar">
+                        <div class="year-header">
+                            <span class="left-button fa fa-chevron-left" id="prev"> </span>
+                            <span class="year" id="label"></span>
+                            <span class="right-button fa fa-chevron-right" id="next"> </span>
+                        </div>
+                        <table class="months-table w-100">
+                            <tbody>
+                                <tr class="months-row">
+                                    <td class="month">Ene</td>
+                                    <td class="month">Feb</td>
+                                    <td class="month">Mar</td>
+                                    <td class="month">Abr</td>
+                                    <td class="month">May</td>
+                                    <td class="month">Jun</td>
+                                    <td class="month">Jul</td>
+                                    <td class="month">Ago</td>
+                                    <td class="month">Sep</td>
+                                    <td class="month">Oct</td>
+                                    <td class="month">Nov</td>
+                                    <td class="month">Dic</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="days-table w-100">
+                            <td class="day">Dom</td>
+                            <td class="day">Lun</td>
+                            <td class="day">Mar</td>
+                            <td class="day">Mie</td>
+                            <td class="day">Jue</td>
+                            <td class="day">Vie</td>
+                            <td class="day">Sab</td>
+                        </table>
+                        <div class="frame">
+                            <table class="dates-table w-100">
+                                <tbody class="tbody">
+                                </tbody>
+                            </table>
+                        </div>
+                        <a class="button" href="~/Citas" id="add-button">Angendar Cita</a>
+                    </div>
+                </div>
+                <div class="events-container">
+                </div>
+                <div class="dialog" id="dialog">
+                    <h2 class="dialog-header"> Add New Event </h2>
+                    <form class="form" id="form">
+                        <div class="form-container" align="center">
+                            <label class="form-label" id="valueFromMyButton" for="name">Event name</label>
+                            <input class="input" type="text" id="name" maxlength="36">
+                            <label class="form-label" id="valueFromMyButton" for="count">Number of people to invite</label>
+                            <input class="input" type="number" id="count" min="0" max="1000000" maxlength="7">
+                            <input type="button" value="Cancel" class="button" id="cancel-button">
+                            <input type="button" value="OK" class="button button-white" id="ok-button">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg ">
+
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titulo"></h5>
+                    <button type="button" class="btn-close" onclick="salir()" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formulario" name="formulario" enctype="multipart/form-data">
+
+
+                        <div class="row">
+
+
+                               <div class="col mb-3">
+
+
+
+                                <strong>Consulta#  </strong><label id="idCita"></label>
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="row">
+
+
+                            
+                         
+
+
+
+                            <div class="col">
+
+
+
+                                <strong>Paciente:  </strong><label id="paciente"></label>
+
+
+
+                            </div>
+
+
+                            <div class="col">
+
+
+
+                                <strong>Doctor:  </strong><label id="doctor"></label>
+
+
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+
+
+
+
+                        <div class="row mt-3">
+
+                            <div class="col">
+
+
+
+                                <strong>Especialidad:  </strong><label id="especialidad"></label>
+
+
+
+                            </div>
+
+
+                            <div class="col">
+
+
+
+                                <strong>Seguro:  </strong><label id="seguro"></label>
+
+
+
+                            </div>
+
+
+
+
+                        </div>
+
+                        <hr />
+
+
+
+                         <div class="row">
+                            
+
+                                <div class="col-sm-8">
+                                    <select id="idProcedimiento" class="form-select validador">
+                                    </select>
+                                </div>
+
+
+
+
+                        
+
+
+
+                            <div class="col-sm-4">
+
+                                <a id="agregar" class="btn btn-primary col-12">Agregar</a>
+
+                            </div>
+
+                        </div>      
+
+                         <div class="table-responsive-sm mt-4">
+                            <table class="table table-sm table-striped" style="font-size:0.73rem">
+                                <thead class="bg-primary text-white">
+                                    <tr>
+                                        <th width="55%">Procedimientos</th>  
+                                         <th width="40%">Costo</th>
+                                        <th><i class="bi bi-three-dots"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="detalle">
+                                    <tr>
+                                        <td colspan="2" class="text-center">
+                                            Seleccione un Procedimiento
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+
+
+
+
+                        <h5 id="total" class="mt-1" style="text-align:end"></h5>
+
+
+
+
+                    </form>
+
+                    
+                       
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button name="salir" id="salir" type="button" onclick="salir()" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                    <button name="guardar" id="guardar" type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script defer src="~/calendar/js/jquery.min.js"></script>
+    <script defer src="~/calendar/js/popper.js"></script>
+    <script defer src="~/calendar/js/bootstrap.min.js"></script>
+    <script defer src="~/calendar/js/main.js"></script>
+    <script defer src="~/js/siteDetalleCitas.js"></script>
+
+</body>
+</html>
+
+
